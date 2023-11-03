@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +6,12 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Input() appTitle: string | undefined
+  @Input() appTitle: string | undefined;
+
+  onMenuClick() {
+    console.log("Меню с категориями и выходом открыто!")
+  }
+  onLoginClick() {
+    console.log("Окно логина и регистрации открыто!")
+  }
 }

@@ -1,10 +1,20 @@
 <mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    (click)="onMenuClick()"
+  >
     <mat-icon>menu</mat-icon>
   </button>
-  <span>{{appTitle}}</span>
+  <span>{{ appTitle }}</span>
   <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with login icon">
+  <button
+    mat-icon-button
+    class="example-icon login-icon"
+    aria-label="Example icon-button with login icon"
+    (click)="onLoginClick()"
+  >
     <mat-icon>login</mat-icon>
   </button>
 </mat-toolbar>
