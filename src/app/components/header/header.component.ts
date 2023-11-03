@@ -9,9 +9,9 @@ export class HeaderComponent {
   @Input() appTitle: string | undefined;
 
   onMenuClick() {
-    console.log("Меню с категориями и выходом открыто!")
+    console.log('Меню с категориями и выходом открыто!');
   }
   onLoginClick() {
-    console.log("Окно логина и регистрации открыто!")
+    console.log('Окно логина и регистрации открыто!');
   }
 }
