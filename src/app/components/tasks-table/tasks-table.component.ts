@@ -1,12 +1,12 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import {IdCreatorService} from "../../shared/id-creator.service";
-import {MatButtonModule} from "@angular/material/button";
-import {MatIconModule} from "@angular/material/icon";
+import { IdCreatorService } from '../../shared/id-creator/id-creator.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 export interface PeriodicElement {
-  _id: number;
+  id: number;
   taskText: string | null;
   expirationDate: string;
   priority: 'Urgent' | 'Medium' | 'Low';
@@ -14,7 +14,7 @@ export interface PeriodicElement {
 }
 const ELEMENT_DATA: PeriodicElement[] = [
   {
-    _id: 0,
+    id: 0,
     taskText: 'Сделать уборку',
     expirationDate: `03.11.23`,
     priority: 'Urgent',
@@ -39,8 +39,7 @@ export class TasksTableComponent implements AfterViewInit {
   ];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  constructor(private idCreatorService: IdCreatorService) {
-  }
+  constructor(private idCreatorService: IdCreatorService) {}
 
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -50,23 +49,29 @@ export class TasksTableComponent implements AfterViewInit {
 
   onClickAddTask() {
     ELEMENT_DATA.push({
-      _id: this.idCreatorService.generateTaskId(),
-      taskText: 'Ещё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаЕщё задачаv',
+      id: this.idCreatorService.generateTaskId(),
+      taskText: 'Построить космический корабль и улететь на Марс',
       expirationDate: `06.11.29`,
       priority: 'Low',
       category: 'Задачи по кеку',
     });
-    console.log(`Создана задача с id: ${ELEMENT_DATA[ELEMENT_DATA.length-1]._id}`)
+    console.log(
+      `Создана задача с id: ${ELEMENT_DATA[ELEMENT_DATA.length - 1].id}`,
+    );
     this.dataSource = new MatTableDataSource(ELEMENT_DATA);
   }
 
-  onClickDeleteTask() {
-    ELEMENT_DATA.pop();
+  onClickDeleteTask(taskId: number) {
+    const index = ELEMENT_DATA.findIndex(task => task.id === taskId);
+    if (index !== -1) {
+      ELEMENT_DATA.splice(index, 1);
+    }
     this.dataSource = new MatTableDataSource(ELEMENT_DATA);
   }
 
-  onClickEditTask() {
-    ELEMENT_DATA[0].taskText = prompt("Введите текст задачи");
+  onClickEditTask(taskId: number) {
+    const index = ELEMENT_DATA.findIndex(task => task.id === taskId);
+    ELEMENT_DATA[index].taskText = prompt('Введите текст задачи');
     this.dataSource = new MatTableDataSource(ELEMENT_DATA);
   }
 }
