@@ -50,7 +50,7 @@ export class TasksTableComponent implements AfterViewInit {
   onClickAddTask() {
     ELEMENT_DATA.push({
       id: this.idCreatorService.generateTaskId(),
-      taskText: 'Построить космический корабль и улететь на Марс',
+      taskText: prompt('Введите текст задачи'),
       expirationDate: `06.11.29`,
       priority: 'Low',
       category: 'Задачи по кеку',
@@ -58,20 +58,21 @@ export class TasksTableComponent implements AfterViewInit {
     console.log(
       `Создана задача с id: ${ELEMENT_DATA[ELEMENT_DATA.length - 1].id}`,
     );
-    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+    this.dataSource.data = ELEMENT_DATA;
   }
 
   onClickDeleteTask(taskId: number) {
-    const index = ELEMENT_DATA.findIndex(task => task.id === taskId);
+    const index = ELEMENT_DATA.findIndex((task) => task.id === taskId);
     if (index !== -1) {
       ELEMENT_DATA.splice(index, 1);
     }
-    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+    this.dataSource.data = ELEMENT_DATA;
   }
 
   onClickEditTask(taskId: number) {
-    const index = ELEMENT_DATA.findIndex(task => task.id === taskId);
-    ELEMENT_DATA[index].taskText = prompt('Введите текст задачи');
-    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+    const index = ELEMENT_DATA.findIndex((task) => task.id === taskId);
+    const newTaskText = prompt('Введите текст задачи', String(ELEMENT_DATA[index].taskText))
+    ELEMENT_DATA[index].taskText = newTaskText?newTaskText:ELEMENT_DATA[index].taskText;
+    this.dataSource.data = ELEMENT_DATA;
   }
 }
