@@ -1,1 +1,13 @@
-<p>categories-list works!</p>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer class="example-sidenav" mode="side" [opened]="isOpenedMenu">
+    <p>categories-list works!</p>
+    <p>It'll be username here</p>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="toggleMenu()">
+      Toggle sidenav
+    </button>
+  </div>
+
+</mat-drawer-container>

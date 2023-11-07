@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Todolist';
+
+  isOpenedMenuFromApp = false
+
+  onMenuClick(event: Event) {
+    this.isOpenedMenuFromApp = !this.isOpenedMenuFromApp
+  }
 }

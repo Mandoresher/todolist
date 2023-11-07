@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderModule } from './components/header/header.module';
 import { TasksTableComponent } from './components/tasks-table/tasks-table.component';
+import { CategoriesListModule } from "./components/categories-list/categories-list.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { TasksTableComponent } from './components/tasks-table/tasks-table.compon
     BrowserAnimationsModule,
     HeaderModule,
     TasksTableComponent,
+    CategoriesListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

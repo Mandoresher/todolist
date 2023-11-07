@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +8,10 @@ import { Component, Input } from '@angular/core';
 export class HeaderComponent {
   @Input() appTitle: string | undefined;
 
-  onMenuClick() {
-    console.log('Меню с категориями и выходом открыто!');
+  @Output() menuClick = new EventEmitter<Event>()
+
+  onMenuClick(event: Event) {
+    this.menuClick.emit(event)
   }
   onLoginClick() {
     console.log('Окно логина и регистрации открыто!');

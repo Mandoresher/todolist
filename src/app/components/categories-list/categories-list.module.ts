@@ -1,18 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoriesListComponent } from './categories-list.component';
-
-
+import {MatButtonModule} from '@angular/material/button';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
-  declarations: [
-    CategoriesListComponent
-  ],
+  declarations: [CategoriesListComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    MatButtonModule,
+    MatSidenavModule,
   ],
-  exports: [
-    CategoriesListComponent
-  ]
+  exports: [CategoriesListComponent],
 })
-export class CategoriesListModule { }
+export class CategoriesListModule {}

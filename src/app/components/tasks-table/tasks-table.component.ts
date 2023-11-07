@@ -71,8 +71,13 @@ export class TasksTableComponent implements AfterViewInit {
 
   onClickEditTask(taskId: number) {
     const index = ELEMENT_DATA.findIndex((task) => task.id === taskId);
-    const newTaskText = prompt('Введите текст задачи', String(ELEMENT_DATA[index].taskText))
-    ELEMENT_DATA[index].taskText = newTaskText?newTaskText:ELEMENT_DATA[index].taskText;
+    const newTaskText = prompt(
+      'Введите текст задачи',
+      String(ELEMENT_DATA[index].taskText),
+    );
+    ELEMENT_DATA[index].taskText = newTaskText
+      ? newTaskText
+      : ELEMENT_DATA[index].taskText;
     this.dataSource.data = ELEMENT_DATA;
   }
 }

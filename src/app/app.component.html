@@ -1,2 +1,6 @@
-<app-header [appTitle]="title"></app-header>
+<app-header
+  [appTitle]="title"
+  (menuClick)="onMenuClick($event)"
+></app-header>
+<app-categories-list [(isOpenedMenu)]="isOpenedMenuFromApp"></app-categories-list>
 <app-tasks-table></app-tasks-table>
